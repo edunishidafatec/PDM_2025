@@ -62,11 +62,25 @@ obterLocalizacao = () => {
     }
   )
 }
- render(){
-   return(
-     <div>Meu-App</div>
-   )
- }
+  render() {
+    return (
+      <div className="container mt-2">
+        <div className="row justify-content-center">
+          <div className="col-md-8">
+            <div className="card">
+              <div className="card-body">
+                <div 
+                className="d-flex align-items-center border rounded mb-2"
+                style={{height: '6rem'}}>
+                  <i className={`fa-solid fa-5x fa-${this.state.icone}`}></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default App
