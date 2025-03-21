@@ -1,5 +1,6 @@
 import React from "react"
 import { EstacaoClimatica } from './EstacaoClimatica'
+import { Loading } from './Loading'
 
 class App extends React.Component{
   // constructor(props){
@@ -96,14 +97,26 @@ obterLocalizacao = () => {
       <div id="app"className="container mt-2">
         <div className="row justify-content-center">
           <div className="col-md-8">
+            {
+              !this.state.latitude && !this.state.mensagemDeErro ?
+              <Loading 
+              mensagem= "Informe se permite acesso a localização ai"/>
+            :
+            this.state.mensagemDeErro ?
+            //  p.border.rounded.p-2.fs-1.text-center
+            <p className="border eounded p-2 fs-1 text-center">
+              É preciso dar permissão de acesso a localização, caso contrário não será possível
+              exibir a sua estação climática
+            </p>
+            :
             <EstacaoClimatica
             icone={this.state.icone}
             estacao={this.state.estacao}
             latitude={this.state.latitude}
             longitude={this.state.longitude}
-            data={this.state.data}
             mensagemDeErro={this.state.mensagemDeErro}
             obterLocalizacao={this.obterLocalizacao}/>
+  }
           </div>
         </div>
       </div>
